@@ -25,4 +25,17 @@ public class UsersServices {
     public List<Users> searchByName(){
         return usersRepository.findAll();
     }
+
+    public void deleteUsers(Integer id){
+        usersRepository.deleteById(id);
+    }
+
+    public Users updateUsers(Integer id, Users users){
+        Users existingUser = usersRepository.findById(id).orElse(null);
+        if(existingUser != null){
+            existingUser.setName(users.getName());
+            return usersRepository.save(existingUser);
+        }
+        return null;
+    }
 }

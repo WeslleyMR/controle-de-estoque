@@ -30,4 +30,14 @@ public class UsersController {
         return usersServices.searchById(id);
     }
 
+    @DeleteMapping("{id}")
+    public void deleteUser(@PathVariable Integer id){
+        usersServices.deleteUsers(id);
+    }
+
+    @PutMapping("{id}")
+    public Users updateUsers(@PathVariable Integer id, @RequestBody Users users){
+        return usersServices.updateUsers(id, users);
+    }
+
 }
