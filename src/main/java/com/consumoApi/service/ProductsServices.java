@@ -1,6 +1,8 @@
 package com.consumoApi.service;
 
 import com.consumoApi.entities.Products;
+import com.consumoApi.entities.Suppliers;
+import com.consumoApi.entities.Users;
 import com.consumoApi.repository.ProductsRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +26,18 @@ public class ProductsServices {
 
     public List<Products> searchByName(){
         return productsRepository.findAll();
+    }
+
+    public void deleteProducts(Integer id){
+        productsRepository.deleteById(id);
+    }
+
+    public Products updateProducts(Integer id, Products products){
+        Products existingProducs = productsRepository.findById(id).orElse(null);
+        if(existingProducs != null){
+            existingProducs.setName(products.getName());
+            return productsRepository.save(existingProducs);
+        }
+        return null;
     }
 }
