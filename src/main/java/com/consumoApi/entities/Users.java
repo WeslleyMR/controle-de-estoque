@@ -1,7 +1,6 @@
 package com.consumoApi.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.service.spi.InjectService;
 
 @Entity
 @Table(name = "users")
